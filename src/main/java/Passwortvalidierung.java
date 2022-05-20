@@ -6,41 +6,62 @@ public class Passwortvalidierung {
 
         String[] passwords = {"test", "Test123", "NeuerVersuch", "GuteSpielertragendie7und17"};
         Scanner scanner = new Scanner(System.in);
-        //multiChecker(passwords);
+        multiChecker(passwords);
 
-        //System.out.println(passwordChecker(scanner.next()));
+        System.out.println(passwordChecker(scanner.next()));
 
     }
     public static String passwordChecker(String password){
-        if(password.length() > 7){
-            if(stringCheckerUppercase(password)) {
-                if(stringCheckerNumber(password)) {
-                    return "Das Passwort funktioniert!";
-                }
-            }
+        if (stringCheckerLength(password) < 8){
+            return "Das Passwort ist nicht Sicher";
         }
-        return "Das Passwort ist ungültig";
-    }
+        if (stringCheckerNumber(password) < 1){
+            return "Das Passwort ist nicht Sicher";
+        }
+        if (stringCheckerLowerCase(password) == 0){
+            return "Das Passwort ist nicht Sicher";
+        }
+        if (stringCheckerUpperCase(password) == 0){
+            return "Das Passwort ist nicht Sicher";
+        }
+        return "Das Passwort ist Sicher";
 
-    public static boolean stringCheckerUppercase(String password){
+    }
+    public static int stringCheckerLength(String password){
+        int maxLength = 0;
+        maxLength = password.length();
+        return maxLength;
+    }
+    public static int stringCheckerUpperCase(String password){
+        int checkUpperCase = 0;
         for (int i = 0; i < password.length(); i++) {
             char c = password.charAt(i);
             if (Character.isUpperCase(c)){
-                return true;
+                checkUpperCase += 1;
             }
         }
-        return false;
+        return checkUpperCase;
     }
-    public static boolean stringCheckerNumber(String password) {
+    public static int stringCheckerLowerCase(String password){
+        int checkLowerCase = 0;
+        for (int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+            if (Character.isLowerCase(c)){
+                checkLowerCase += 1;
+            }
+        }
+        return checkLowerCase;
+    }
+    public static int stringCheckerNumber(String password) {
+        int checkNumber = 0;
         for (int i = 0; i < password.length(); i++) {
             char c = password.charAt(i);
             if (Character.isDigit(c)) {
-                return true;
+                checkNumber += 1;
             }
         }
-        return false;
+        return checkNumber;
     }
-
     public static void multiChecker(String[] passwords){
         for (int i = 0; i < passwords.length; i++) {
             System.out.println(passwordChecker(passwords[i]));
