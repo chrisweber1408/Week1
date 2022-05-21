@@ -6,24 +6,45 @@ public class Passwortvalidierung {
 
         String[] passwords = {"test", "Test123", "NeuerVersuch", "GuteSpielertragendie7und17"};
         Scanner scanner = new Scanner(System.in);
-        multiChecker(passwords);
+        //multiChecker(passwords);
 
         System.out.println(passwordChecker(scanner.next()));
 
     }
     public static String passwordChecker(String password){
+        boolean maxLength = true;
+        boolean number = true;
+        boolean lowerCase = true;
+        boolean upperCase = true;
         if (stringCheckerLength(password) < 8){
-            return "Das Passwort ist nicht Sicher";
+            maxLength = false;
         }
         if (stringCheckerNumber(password) < 1){
-            return "Das Passwort ist nicht Sicher";
+            number = false;
         }
         if (stringCheckerLowerCase(password) == 0){
-            return "Das Passwort ist nicht Sicher";
+            lowerCase = false;
         }
         if (stringCheckerUpperCase(password) == 0){
-            return "Das Passwort ist nicht Sicher";
+            upperCase = false;
         }
+        if (maxLength == false || number == false || lowerCase == false || upperCase == false ){
+            String mistakes = "";
+            if (maxLength == false){
+                mistakes = "Das Passwort ist zu kurz. ";
+            }
+            if (number == false){
+                mistakes = mistakes + "Das Passwort enthält keine Zahl. ";
+            }
+            if (lowerCase == false){
+                mistakes = mistakes + "Das Passwort enthält keinen Kleinbuchstaben. ";
+            }
+            if (upperCase == false){
+                mistakes = mistakes + "Das Passwort enthält keinen Großbuchstaben.";
+            }
+            return mistakes;
+        }
+        
         return "Das Passwort ist Sicher";
 
     }

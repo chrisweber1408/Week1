@@ -20,7 +20,7 @@ public class PasswortvalidierungTest {
         //When
         String actual = Passwortvalidierung.passwordChecker(password);
         //Then
-        Assertions.assertEquals("Das Passwort ist nicht Sicher", actual);
+        Assertions.assertEquals("Das Passwort enthält keine Zahl. ", actual);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class PasswortvalidierungTest {
         //When
         String actual = Passwortvalidierung.passwordChecker(password);
         //Then
-        Assertions.assertEquals("Das Passwort ist nicht Sicher", actual);
+        Assertions.assertEquals("Das Passwort enthält keine Zahl. Das Passwort enthält keinen Großbuchstaben.", actual);
     }
     @Test
     void ShouldBeNotSafeCauseToShort(){
@@ -39,7 +39,7 @@ public class PasswortvalidierungTest {
         //When
         String actual = Passwortvalidierung.passwordChecker(password);
         //Then
-        Assertions.assertEquals("Das Passwort ist nicht Sicher", actual);
+        Assertions.assertEquals("Das Passwort ist zu kurz. Das Passwort enthält keine Zahl. ", actual);
     }
 
 
