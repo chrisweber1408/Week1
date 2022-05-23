@@ -34,7 +34,7 @@ public class Passwortvalidierung {
                 mistakes = "Das Passwort ist zu kurz. ";
             }
             if (number == false){
-                mistakes = mistakes + "Das Passwort enthält keine Zahl. ";
+                mistakes = mistakes + "Das Passwort enthält keine Zahl. " ;
             }
             if (lowerCase == false){
                 mistakes = mistakes + "Das Passwort enthält keinen Kleinbuchstaben. ";
